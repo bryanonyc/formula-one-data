@@ -19,7 +19,7 @@ public class F1StatsApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/api/**")
-						.allowedOrigins("https://bryano-f1-stats.onrender.com", "http://localhost:3000")
+						.allowedOrigins("https://bryano-f1-data.onrender.com", "http://localhost:3000")
 						.allowedMethods("GET");
 				WebMvcConfigurer.super.addCorsMappings(registry);
 			}
