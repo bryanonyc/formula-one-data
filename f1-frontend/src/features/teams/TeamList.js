@@ -111,7 +111,7 @@ const TeamList = () => {
             title: 'Full Team Name',
             dataIndex: 'fullTeamName',
             key: 'fullTeamName',
-            // ...getColumnSearchProps('fullTeamName'),
+            ...getColumnSearchProps('fullTeamName'),
             sorter: (a, b) => a.fullTeamName.localeCompare(b.fullTeamName),
             sortDirections: ['descend', 'ascend'],
         },
