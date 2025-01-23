@@ -26,7 +26,9 @@ const AppLayout = (props) => {
                 </div>
                 </Content>
                 <Footer className='app-layout-footer'>
-                    Bryan Ogden ©{new Date().getFullYear()}
+                    Bryan Ogden ©{new Date().getFullYear()}.<br />
+                    This is not affiliated at all with Formula One and is not an offical Formula One application.
+                    The F1 logo is a trademark of Formula One.
                 </Footer>
             </Layout>
         </div>
