@@ -193,6 +193,7 @@ const DriverList = () => {
                 bordered
                 dataSource={data}
                 columns={columns}
+                size='small'
             />
         }
         </>

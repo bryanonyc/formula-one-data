@@ -196,6 +196,7 @@ const TeamList = () => {
                 bordered
                 dataSource={data}
                 columns={columns}
+                size='small'
             />
         }
         </>

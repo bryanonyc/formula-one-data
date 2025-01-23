@@ -163,7 +163,7 @@ const TeamArchiveList = () => {
             sorter: (a, b) => a.team.localeCompare(b.team),
             sortDirections: ['descend', 'ascend'],
             render: (text) => (
-              <Button className='link-button' type="link" onClick={() => handleOnTeamSelection(text)}>
+              <Button type="link" onClick={() => handleOnTeamSelection(text)} size='small'>
                 {text}
               </Button>
             ),
@@ -218,6 +218,7 @@ const TeamArchiveList = () => {
                 bordered
                 dataSource={tableData}
                 columns={columns}
+                size='small'
             />
         }
         { selectedTeam && chartData &&

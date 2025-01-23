@@ -163,7 +163,7 @@ const DriverArchiveList = () => {
             sorter: (a, b) => a.driver.localeCompare(b.driver),
             sortDirections: ['descend', 'ascend'],
             render: (text) => (
-              <Button className='link-button' type="link" onClick={() => handleOnDriverSelection(text)}>
+              <Button type="link" onClick={() => handleOnDriverSelection(text)} size='small'>
                 {text}
               </Button>
             ),
@@ -234,6 +234,7 @@ const DriverArchiveList = () => {
                 bordered
                 dataSource={tableData}
                 columns={columns}
+                size='small'
             />
         }
         { selectedDriver && chartData &&
