@@ -326,3 +326,8 @@ table th.ant-table-column-sort,
 table td.ant-table-column-sort {
   background-color: #CCEEFF !important;
 }
+
+.chart-container {
+  border: 1px solid;
+  width: 90%;
+}

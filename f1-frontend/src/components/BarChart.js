@@ -42,7 +42,11 @@ const BarChart = ({
         }],
     };
   return (
-    <Bar data={chartData} options={chartJSOptions} />
+    <div className='center-content'>
+      <div className='chart-container'>
+        <Bar data={chartData} options={chartJSOptions} />
+      </div>
+    </div>
   )
 }
 
