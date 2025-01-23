@@ -14,8 +14,9 @@ You can access the app [here.](https://bryano-f1-data.onrender.com/)
 - **Frontend**: A React application leveraing Ant Design and React Query to query the backend to fetch the data and display it to the user.
 
 ## Screenshots
-<img width="1146" alt="Screenshot 2025-01-22 at 7 19 46 PM" src="https://github.com/user-attachments/assets/b7423ba1-a174-428d-9365-9cdc3950a90e" />
+<img width="1445" alt="Screenshot 2025-01-23 at 7 58 46 AM" src="https://github.com/user-attachments/assets/0573dd1d-6f18-4b79-9037-ec4044428f60" />
 
-<img width="1282" alt="Screenshot 2025-01-22 at 7 25 22 PM" src="https://github.com/user-attachments/assets/3c0eb654-20eb-4dd7-81ba-5b26c2ea13b3" />
+<img width="1438" alt="Screenshot 2025-01-23 at 7 59 28 AM" src="https://github.com/user-attachments/assets/74fcf43b-8e89-483f-ac9a-e43ae5e66924" />
 
-<img width="1319" alt="Screenshot 2025-01-22 at 7 26 12 PM" src="https://github.com/user-attachments/assets/4acb8030-7e50-43cb-9750-4c96a5fcfb57" />
+<img width="1440" alt="Screenshot 2025-01-23 at 8 00 25 AM" src="https://github.com/user-attachments/assets/ce859150-1e2b-44f8-ac92-421a70afba9f" />
+
