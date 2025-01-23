@@ -224,6 +224,7 @@ const TeamArchiveList = () => {
                 dataSource={tableData}
                 columns={columns}
                 size='small'
+                scroll={{ y: 500}}
             />
         }
         { selectedTeam && chartData &&

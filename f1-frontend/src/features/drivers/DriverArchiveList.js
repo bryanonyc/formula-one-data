@@ -240,6 +240,7 @@ const DriverArchiveList = () => {
                 dataSource={tableData}
                 columns={columns}
                 size='small'
+                scroll={{ y: 500}}
             />
         }
         { selectedDriver && chartData &&

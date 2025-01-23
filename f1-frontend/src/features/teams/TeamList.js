@@ -202,6 +202,10 @@ const TeamList = () => {
                 dataSource={data}
                 columns={columns}
                 size='small'
+                scroll={{ y: 500}}
+                pagination={{
+                    showSizeChanger: true
+                }}
             />
         }
         </>
