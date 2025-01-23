@@ -12,3 +12,10 @@ You can access the app [here.](https://bryano-f1-data.onrender.com/)
 - **Backend**: A Spring Boot application that exposes an API endpoint to serve the scraped data.
 - **Database**: A Postgres database containing the scraped data.
 - **Frontend**: A React application leveraing Ant Design and React Query to query the backend to fetch the data and display it to the user.
+
+## Screenshots
+<img width="1146" alt="Screenshot 2025-01-22 at 7 19 46 PM" src="https://github.com/user-attachments/assets/b7423ba1-a174-428d-9365-9cdc3950a90e" />
+
+<img width="1282" alt="Screenshot 2025-01-22 at 7 25 22 PM" src="https://github.com/user-attachments/assets/3c0eb654-20eb-4dd7-81ba-5b26c2ea13b3" />
+
+<img width="1319" alt="Screenshot 2025-01-22 at 7 26 12 PM" src="https://github.com/user-attachments/assets/4acb8030-7e50-43cb-9750-4c96a5fcfb57" />
