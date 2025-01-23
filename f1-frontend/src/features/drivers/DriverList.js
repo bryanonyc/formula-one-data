@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
-import { Alert, Button, Input, Space, Table, Typography  } from 'antd';
+import { Alert, Button, Input, Space, Spin, Table, Typography  } from 'antd';
 import { DRIVERS_API_URL } from '../api/api';
 const { Title } = Typography;
 
@@ -18,7 +18,7 @@ const DriverList = () => {
         }));
     };
 
-    const { data, error } = useQuery({
+    const { data, isLoading, error } = useQuery({
         queryKey: ['driverData'],
         queryFn: fetchData,
     });
@@ -185,6 +185,11 @@ const DriverList = () => {
             </Button>
             <Title level={3}>Current Year</Title>
         </Space>
+        { isLoading &&
+          <div className='center-content'>
+            <Spin />
+          </div>
+        }
         { error &&
                 <Alert message={`Error: ${error.message}`} type='error'/>
         }

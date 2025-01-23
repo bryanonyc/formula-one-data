@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
-import { Alert, Button, Input, Select, Space, Table, Typography  } from 'antd';
+import { Alert, Button, Input, Select, Space, Spin, Table, Typography  } from 'antd';
 import { TEAM_NAMES_API_URL, TEAMS_ARCHIVE_API_URL } from '../api/api';
 import BarChart from '../../components/BarChart';
 import { pluck } from 'ramda';
@@ -47,7 +47,7 @@ const TeamArchiveList = () => {
       }));
     };
 
-    const { data: tableData, error } = useQuery({
+    const { data: tableData, isLoading: isTableDataLoading, error } = useQuery({
       queryKey: ['teamArchiveData'],
       queryFn: fetchData,
     });
@@ -210,6 +210,11 @@ const TeamArchiveList = () => {
         </Space>
 
         <Title level={3}>{selectedTeam} Historical Data</Title>
+        { isTableDataLoading &&
+          <div className='center-content'>
+            <Spin />
+          </div>
+        }
         { error &&
             <Alert message={`Error: ${error.message}`} type='error'/>
         }

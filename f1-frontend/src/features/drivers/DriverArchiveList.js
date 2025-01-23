@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
-import { Alert, Button, Input, Select, Space, Table, Typography  } from 'antd';
+import { Alert, Button, Input, Select, Space, Spin, Table, Typography  } from 'antd';
 import { DRIVER_NAMES_API_URL, DRIVERS_ARCHIVE_API_URL } from '../api/api';
 import BarChart from '../../components/BarChart';
 import { pluck } from 'ramda';
@@ -46,7 +46,7 @@ const DriverArchiveList = () => {
       }));
     };
 
-  const { data: tableData, error } = useQuery({
+  const { data: tableData, isLoading: isTableDataLoading, error } = useQuery({
     queryKey: ['driverArchiveData'],
     queryFn: fetchData,
   });
@@ -226,6 +226,11 @@ const DriverArchiveList = () => {
         </Space>
 
         <Title level={3}>{selectedDriver} Historical Data</Title>
+        { isTableDataLoading &&
+          <div className='center-content'>
+            <Spin />
+          </div>
+        }
         { error &&
                 <Alert message={`Error: ${error.message}`} type='error'/>
         }
