@@ -19,7 +19,7 @@ const TeamArchiveList = () => {
         return response.json();
     };
 
-    const { data: chartData } = useQuery({
+    const { data: chartData, isLoading: isChartDataLoading } = useQuery({
       queryKey: ["chartData", selectedTeam],
       queryFn: () => fetchChartData(selectedTeam),
       // Enable only when a user selects a team from the dropdown
@@ -210,7 +210,7 @@ const TeamArchiveList = () => {
         </Space>
 
         <Title level={3}>{selectedTeam} Historical Data</Title>
-        { isTableDataLoading &&
+        { (isTableDataLoading || isChartDataLoading) &&
           <div className='center-content'>
             <Spin />
           </div>

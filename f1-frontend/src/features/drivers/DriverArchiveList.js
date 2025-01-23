@@ -19,7 +19,7 @@ const DriverArchiveList = () => {
       return response.json();
   };
 
-  const { data: chartData } = useQuery({
+  const { data: chartData, isLoading: isChartDataLoading } = useQuery({
     queryKey: ["driverChartData", selectedDriver],
     queryFn: () => fetchChartData(selectedDriver),
     // Enable only when a user selects a team from the dropdown
@@ -226,7 +226,7 @@ const DriverArchiveList = () => {
         </Space>
 
         <Title level={3}>{selectedDriver} Historical Data</Title>
-        { isTableDataLoading &&
+        { (isTableDataLoading || isChartDataLoading) &&
           <div className='center-content'>
             <Spin />
           </div>
