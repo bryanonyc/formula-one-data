@@ -21,7 +21,7 @@ public class F1StatsApplication {
 				registry.addMapping("/api/**")
 //						.allowedOrigins("https://bryano-f1-data.onrender.com", "http://localhost:3000")
 						.allowedOrigins(System.getenv("CORS_ALLOWED_ORIGINS"))
-						.allowedMethods(System.getenv("CORS_ALLOWED_METHODS"));
+						.allowedMethods("GET");
 				WebMvcConfigurer.super.addCorsMappings(registry);
 			}
 		};
