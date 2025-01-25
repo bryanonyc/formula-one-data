@@ -12,10 +12,12 @@ const DriverList = () => {
     const fetchData = async () => {
         const response = await fetch(DRIVERS_API_URL);
         const json = await response.json();
-        return json.map((r) => ({
-        key: `${r.driver}`,
-        ...r
-        }));
+        json.forEach(element => {
+            element.key = element.driver;;
+            const [day, month, year] = element.dateOfBirth.split('/');
+            element.dateOfBirth = new Date(year, month-1, day).toLocaleDateString();
+        });
+        return json;
     };
 
     const { data, isLoading, error } = useQuery({
