@@ -151,7 +151,6 @@ const TeamArchiveList = () => {
             title: 'Position',
             dataIndex: 'position',
             key: 'position',
-            ...getColumnSearchProps('position'),
             sorter: (a, b) => a.position - b.position,
             sortDirections: ['descend', 'ascend'],
         },
