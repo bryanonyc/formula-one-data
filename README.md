@@ -4,12 +4,14 @@ F1 Data is a project to display and search historical Formula One Drivers and Co
 
 The project is divided into three main components: Backend, Frontend and Data Scraping.
 
+The data scraper is written in Python and exposes an API endpoint to fetch updated data for both current teams and current drivers via a Flask application.  The backend is a Spring boot application which serves up the data from the database and also makes the API call to the Python Flask application to fetch updated data when requested by the user.
+
 You can access the app [here.](https://bryano-f1-data.onrender.com/)
 
 ## Features
 
-- **Data Scraping**: A python data scraper to scrape driver and team data from the offical Formula One website.
-- **Backend**: A Spring Boot application that exposes an API endpoint to serve the scraped data.
+- **Data Scraping**: A python data scraper to scrape driver and team data from the offical Formula One website and also a Flask application to handle on-demand update requests to fetch the latest stats.
+- **Backend**: A Spring Boot application that exposes an API endpoint to serve the scraped data. It also makes the API call to the Flask application whenever an update is requested by the user.
 - **Database**: A Postgres database containing the scraped data.
 - **Frontend**: A React application leveraing Ant Design and React Query to query the backend to fetch the data and display it to the user.
 
