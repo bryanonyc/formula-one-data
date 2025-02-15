@@ -55,10 +55,10 @@ public class DriverStatsService {
                 .collect(Collectors.toList());
     }
 
-    public List<ScrapedDriver> getUpdatedDrivers() throws IOException, InterruptedException {
+    public List<DriverStats> getUpdatedDrivers() throws IOException, InterruptedException {
         List<ScrapedDriver> updatedDrivers = driverScraperHttpClient.getAll();
         List<DriverStats> entities = updatedDrivers.stream().map(driverMapper::toEntity).toList();
         driverStatsRepository.saveAll(entities);
-        return updatedDrivers;
+        return getDrivers();
     }
 }

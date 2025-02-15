@@ -36,7 +36,7 @@ public class DriverStatsController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/current")
-    public List<ScrapedDriver> getDriverUpdated() throws IOException, InterruptedException {
+    public List<DriverStats> getDriverUpdated() throws IOException, InterruptedException {
         return driverStatsService.getUpdatedDrivers();
     }
 }
