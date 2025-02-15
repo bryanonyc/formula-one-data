@@ -36,7 +36,7 @@ public class TeamStatsController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/current")
-    public List<ScrapedTeam> getTeamUpdated() throws IOException, InterruptedException {
+    public List<TeamStats> getTeamUpdated() throws IOException, InterruptedException {
         return teamStatsService.getUpdatedTeams();
     }
 }

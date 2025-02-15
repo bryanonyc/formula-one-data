@@ -53,10 +53,10 @@ public class TeamStatsService {
                 .collect(Collectors.toList());
     }
 
-    public List<ScrapedTeam> getUpdatedTeams() throws IOException, InterruptedException {
+    public List<TeamStats> getUpdatedTeams() throws IOException, InterruptedException {
         List<ScrapedTeam> updatedTeams = teamScraperHttpClient.getAll();
         List<TeamStats> entities = updatedTeams.stream().map(teamMapper::toEntity).toList();
         teamStatsRepository.saveAll(entities);
-        return updatedTeams;
+        return getTeams();
     }
 }
