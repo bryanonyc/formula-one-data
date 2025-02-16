@@ -1,5 +1,6 @@
 package com.bryano.f1_stats.driver;
 
+import http.DataScraperHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +12,13 @@ import java.util.stream.Collectors;
 @Component
 public class DriverStatsService {
     private final DriverStatsRepository driverStatsRepository;
-    private final DriverScraperHttpClient driverScraperHttpClient;
+    private final DataScraperHttpClient dataScraperHttpClient;
     private final DriverMapper driverMapper;
 
     @Autowired
-    public DriverStatsService(DriverStatsRepository driverStatsRepository, DriverScraperHttpClient driverScraperHttpClient, DriverMapper driverMapper) {
+    public DriverStatsService(DriverStatsRepository driverStatsRepository, DataScraperHttpClient dataScraperHttpClient, DriverMapper driverMapper) {
         this.driverStatsRepository = driverStatsRepository;
-        this.driverScraperHttpClient = driverScraperHttpClient;
+        this.dataScraperHttpClient = dataScraperHttpClient;
         this.driverMapper = driverMapper;
     }
 
@@ -56,7 +57,7 @@ public class DriverStatsService {
     }
 
     public List<DriverStats> getUpdatedDrivers() throws IOException, InterruptedException {
-        List<ScrapedDriver> updatedDrivers = driverScraperHttpClient.getAll();
+        List<ScrapedDriver> updatedDrivers = dataScraperHttpClient.getDrivers();
         List<DriverStats> entities = updatedDrivers.stream().map(driverMapper::toEntity).toList();
         driverStatsRepository.saveAll(entities);
         return getDrivers();

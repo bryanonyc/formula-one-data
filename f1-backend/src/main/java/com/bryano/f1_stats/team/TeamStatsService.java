@@ -1,5 +1,6 @@
 package com.bryano.f1_stats.team;
 
+import http.DataScraperHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +12,13 @@ import java.util.stream.Collectors;
 @Component
 public class TeamStatsService {
     private final TeamStatsRepository teamStatsRepository;
-    private final TeamScraperHttpClient teamScraperHttpClient;
+    private final DataScraperHttpClient dataScraperHttpClient;
     private final TeamMapper teamMapper;
 
     @Autowired
-    public TeamStatsService(TeamStatsRepository teamStatsRepository, TeamScraperHttpClient teamScraperHttpClient, TeamMapper teamMapper) {
+    public TeamStatsService(TeamStatsRepository teamStatsRepository, DataScraperHttpClient dataScraperHttpClient, TeamMapper teamMapper) {
         this.teamStatsRepository = teamStatsRepository;
-        this.teamScraperHttpClient = teamScraperHttpClient;
+        this.dataScraperHttpClient = dataScraperHttpClient;
         this.teamMapper = teamMapper;
     }
 
@@ -54,7 +55,7 @@ public class TeamStatsService {
     }
 
     public List<TeamStats> getUpdatedTeams() throws IOException, InterruptedException {
-        List<ScrapedTeam> updatedTeams = teamScraperHttpClient.getAll();
+        List<ScrapedTeam> updatedTeams = dataScraperHttpClient.getTeams();
         List<TeamStats> entities = updatedTeams.stream().map(teamMapper::toEntity).toList();
         teamStatsRepository.saveAll(entities);
         return getTeams();
