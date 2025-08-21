@@ -8,7 +8,7 @@ base_url = "https://www.formula1.com/en/results"
 start_year = 1958
 end_year = date.today().year
 
-column_headers = ['Year', 'Pos', 'Team', 'Pts']
+column_headers = ['year', 'position', 'team', 'points']
 archive_data = []
 
 for year in range(start_year, end_year):
