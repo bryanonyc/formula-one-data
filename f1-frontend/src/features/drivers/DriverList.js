@@ -174,6 +174,13 @@ const DriverList = () => {
             sortDirections: ['descend', 'ascend'],
         },
         {
+            title: 'Points',
+            dataIndex: 'points',
+            key: 'points',
+            sorter: (a, b) => a.points - b.points,
+            sortDirections: ['descend', 'ascend'],
+        },
+        {
             title: 'Grands Prix Entered',
             dataIndex: 'grandsPrixEntered',
             key: 'grandsPrixEntered',

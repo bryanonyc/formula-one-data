@@ -1,20 +1,18 @@
 package com.bryano.f1_stats.driver;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
-@IdClass(DriverStatsKey.class)
 @Table(name = "driver_stats")
 public class DriverStats {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String driver;
 
-    @Id
     private String team;
 
     private String country;
@@ -29,15 +27,30 @@ public class DriverStats {
 
     private String highestRaceFinish;
 
-    private Integer highestGridPosition;
+    private String highestGridPosition;
 
     private String dateOfBirth;
 
     private String placeOfBirth;
 
-    public DriverStats() {}
+    public DriverStats() {
+    }
 
-    public DriverStats(String driver, String team, String country, Integer podiums, Float points, Integer grandsPrixEntered, Integer worldChampionships, String highestRaceFinish, Integer highestGridPosition, String dateOfBirth, String placeOfBirth) {
+    public DriverStats(
+            Integer id,
+            String driver,
+            String team,
+            String country,
+            Integer podiums,
+            Float points,
+            Integer grandsPrixEntered,
+            Integer worldChampionships,
+            String highestRaceFinish,
+            String highestGridPosition,
+            String dateOfBirth,
+            String placeOfBirth
+    ) {
+        this.id = id;
         this.driver = driver;
         this.team = team;
         this.country = country;
@@ -49,6 +62,14 @@ public class DriverStats {
         this.highestGridPosition = highestGridPosition;
         this.dateOfBirth = dateOfBirth;
         this.placeOfBirth = placeOfBirth;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDriver() {
@@ -115,11 +136,11 @@ public class DriverStats {
         this.highestRaceFinish = highestRaceFinish;
     }
 
-    public Integer getHighestGridPosition() {
+    public String getHighestGridPosition() {
         return highestGridPosition;
     }
 
-    public void setHighestGridPosition(Integer highestGridPosition) {
+    public void setHighestGridPosition(String highestGridPosition) {
         this.highestGridPosition = highestGridPosition;
     }
 
@@ -144,18 +165,19 @@ public class DriverStats {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DriverStats driverStats1 = (DriverStats) o;
-        return Objects.equals(driver, driverStats1.driver) && Objects.equals(team, driverStats1.team) && Objects.equals(country, driverStats1.country) && Objects.equals(podiums, driverStats1.podiums) && Objects.equals(points, driverStats1.points) && Objects.equals(grandsPrixEntered, driverStats1.grandsPrixEntered) && Objects.equals(worldChampionships, driverStats1.worldChampionships) && Objects.equals(highestRaceFinish, driverStats1.highestRaceFinish) && Objects.equals(highestGridPosition, driverStats1.highestGridPosition) && Objects.equals(dateOfBirth, driverStats1.dateOfBirth) && Objects.equals(placeOfBirth, driverStats1.placeOfBirth);
+        return Objects.equals(id, driverStats1.id) && Objects.equals(driver, driverStats1.driver) && Objects.equals(team, driverStats1.team) && Objects.equals(country, driverStats1.country) && Objects.equals(podiums, driverStats1.podiums) && Objects.equals(points, driverStats1.points) && Objects.equals(grandsPrixEntered, driverStats1.grandsPrixEntered) && Objects.equals(worldChampionships, driverStats1.worldChampionships) && Objects.equals(highestRaceFinish, driverStats1.highestRaceFinish) && Objects.equals(highestGridPosition, driverStats1.highestGridPosition) && Objects.equals(dateOfBirth, driverStats1.dateOfBirth) && Objects.equals(placeOfBirth, driverStats1.placeOfBirth);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(driver, team, country, podiums, points, grandsPrixEntered, worldChampionships, highestRaceFinish, highestGridPosition, dateOfBirth, placeOfBirth);
+        return Objects.hash(id, driver, team, country, podiums, points, grandsPrixEntered, worldChampionships, highestRaceFinish, highestGridPosition, dateOfBirth, placeOfBirth);
     }
 
     @Override
     public String toString() {
         return "Driver{" +
-                "driver='" + driver + '\'' +
+                "id='" + id + '\'' +
+                ", driver='" + driver + '\'' +
                 ", team='" + team + '\'' +
                 ", country='" + country + '\'' +
                 ", podiums=" + podiums +

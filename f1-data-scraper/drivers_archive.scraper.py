@@ -8,8 +8,8 @@ base_url = "https://www.formula1.com/en/results"
 start_year = 1950
 end_year = date.today().year
 
-column_headers = ['Year', 'Pos', 'Driver', 'Nationality', 'Car', 'Pts']
-archive_data = []
+column_headers = ['year', 'position', 'driver', 'nationality', 'car', 'points']
+data = []
 
 for year in range(start_year, end_year):
     archive_url = f"{base_url}/{year}/drivers"
@@ -19,23 +19,21 @@ for year in range(start_year, end_year):
     soup = BeautifulSoup(response, 'html.parser')
     rows = soup.find('tbody').find_all('tr')
     for row in rows:
-        data = []
-        data.append(year)
+        archive_data = []
+        archive_data.append(year)
         ps = row.find_all('p')
 
         for p in ps:
             value = p.text
 
-            # Driver name is in multiple span tags in an anchor
-            # Car name is in anchor
+            # Driver and Car name are in anchors
             a = p.a
-            if a != None and a.find_all('span') != []:
-                spans = a.find_all('span')
-                value = f"{spans[0].text.strip()} {spans[1].text.strip()}"
+            if a != None:
+                value = a.get('href').rstrip('/').split('/')[-1].replace('-', ' ').title()
 
-            data.append(value)
+            archive_data.append(value)
 
-        archive_data.append(data)
+        data.append(archive_data)
 
-df = pd.DataFrame(archive_data, columns=column_headers)
+df = pd.DataFrame(data, columns=column_headers)
 df.to_csv('drivers_archive.csv', index=False)

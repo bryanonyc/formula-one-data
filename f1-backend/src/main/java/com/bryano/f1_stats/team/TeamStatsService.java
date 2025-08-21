@@ -55,9 +55,18 @@ public class TeamStatsService {
     }
 
     public List<TeamStats> getUpdatedTeams() throws IOException, InterruptedException {
-        List<ScrapedTeam> updatedTeams = dataScraperHttpClient.getTeams();
-        List<TeamStats> entities = updatedTeams.stream().map(teamMapper::toEntity).toList();
-        teamStatsRepository.saveAll(entities);
+        List<ScrapedTeam> scrapedTeams = dataScraperHttpClient.getTeams();
+        List<TeamStats> existingTeams = teamStatsRepository.findAll();
+        List<TeamStats> updatedTeams = scrapedTeams.stream()
+                .map(scraped -> {
+                    TeamStats existingTeam = existingTeams.stream()
+                            .filter(team -> team.getFullTeamName().equalsIgnoreCase(scraped.fullTeamName()))
+                            .findFirst()
+                            .orElse(null);
+                    return teamMapper.toEntity(scraped, existingTeam != null ? existingTeam.getId() : null);
+                })
+                .toList();
+        teamStatsRepository.saveAll(updatedTeams);
         return getTeams();
     }
 }

@@ -57,9 +57,18 @@ public class DriverStatsService {
     }
 
     public List<DriverStats> getUpdatedDrivers() throws IOException, InterruptedException {
-        List<ScrapedDriver> updatedDrivers = dataScraperHttpClient.getDrivers();
-        List<DriverStats> entities = updatedDrivers.stream().map(driverMapper::toEntity).toList();
-        driverStatsRepository.saveAll(entities);
+        List<ScrapedDriver> scrapedDrivers = dataScraperHttpClient.getDrivers();
+        List<DriverStats> existingDrivers = driverStatsRepository.findAll();
+        List<DriverStats> updatedDrivers = scrapedDrivers.stream()
+                .map(scraped -> {
+                    DriverStats existingDriver = existingDrivers.stream()
+                            .filter(driver -> driver.getDriver().equalsIgnoreCase(scraped.driver()))
+                            .findFirst()
+                            .orElse(null);
+                    return driverMapper.toEntity(scraped, existingDriver != null ? existingDriver.getId() : null);
+                })
+                .toList();
+        driverStatsRepository.saveAll(updatedDrivers);
         return getDrivers();
     }
 }

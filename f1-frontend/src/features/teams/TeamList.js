@@ -156,6 +156,14 @@ const TeamList = () => {
             sortDirections: ['descend', 'ascend'],
         },
         {
+            title: 'Technical Chief',
+            dataIndex: 'technicalChief',
+            key: 'technicalChief',
+            ...getColumnSearchProps('technicalChief'),
+            sorter: (a, b) => a.technicalChief.localeCompare(b.technicalChief),
+            sortDirections: ['descend', 'ascend'],
+        },
+        {
             title: 'Chassis',
             dataIndex: 'chassis',
             key: 'chassis',
@@ -164,6 +172,8 @@ const TeamList = () => {
             title: 'Power Unit',
             dataIndex: 'powerUnit',
             key: 'powerUnit',
+            sorter: (a, b) => a.powerUnit.localeCompare(b.powerUnit),
+            sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'First Team Entry',
@@ -189,13 +199,6 @@ const TeamList = () => {
             dataIndex: 'polePositions',
             key: 'polePositions',
             sorter: (a, b) => a.polePositions - b.polePositions,
-            sortDirections: ['descend', 'ascend'],
-        },
-        {
-            title: 'Fastest Laps',
-            dataIndex: 'fastestLaps',
-            key: 'fastestLaps',
-            sorter: (a, b) => a.fastestLaps - b.fastestLaps,
             sortDirections: ['descend', 'ascend'],
         },
     ];
