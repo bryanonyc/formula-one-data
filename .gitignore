@@ -2,3 +2,4 @@
 .DS_Store
 /f1-backend/.vscode
 /f1-backend/bin
+f1-backend/src/main/resources/application-local.yml
