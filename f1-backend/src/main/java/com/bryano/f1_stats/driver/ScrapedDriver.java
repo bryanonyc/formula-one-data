@@ -3,16 +3,16 @@ package com.bryano.f1_stats.driver;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record ScrapedDriver(
-        @JsonProperty("Driver") String driver,
-        @JsonProperty("Team") String team,
-        @JsonProperty("Country") String country,
-        @JsonProperty("Podiums") Integer podiums,
-        @JsonProperty("Points") String points,
-        @JsonProperty("Grands Prix entered") Integer grandsPrixEntered,
-        @JsonProperty("World Championships") Integer worldChampionships,
-        @JsonProperty("Highest race finish") String highestRaceFinish,
-        @JsonProperty("Highest grid position") Integer highestGridPosition,
-        @JsonProperty("Date of birth") String dateOfBirth,
-        @JsonProperty("Place of birth") String placeOfBirth
+        @JsonProperty("driver") String driver,
+        @JsonProperty("team") String team,
+        @JsonProperty("country") String country,
+        @JsonProperty("podiums") Integer podiums,
+        @JsonProperty("points") String points,
+        @JsonProperty("grands_prix_entered") Integer grandsPrixEntered,
+        @JsonProperty("world_championships") Integer worldChampionships,
+        @JsonProperty("highest_race_finish") String highestRaceFinish,
+        @JsonProperty("highest_grid_position") String highestGridPosition,
+        @JsonProperty("date_of_birth") String dateOfBirth,
+        @JsonProperty("place_of_birth") String placeOfBirth
 ) {
 }

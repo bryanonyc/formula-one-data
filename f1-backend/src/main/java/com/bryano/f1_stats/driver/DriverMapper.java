@@ -4,8 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DriverMapper {
-    DriverStats toEntity(ScrapedDriver record) {
+    DriverStats toEntity(ScrapedDriver record, Integer id) {
         return new DriverStats(
+                id,
                 record.driver(),
                 record.team(),
                 record.country(),

@@ -1,18 +1,22 @@
 package com.bryano.f1_stats.driver_archive;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
+
+import java.util.Objects;
 
 @Entity
-@IdClass(DriverArchiveKey.class)
 public class DriverArchive {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private Integer year;
 
     private String position;
 
-    @Id
     private String driver;
 
     private String nationality;
@@ -21,15 +25,33 @@ public class DriverArchive {
 
     private Float points;
 
-    public DriverArchive() {}
+    public DriverArchive() {
+    }
 
-    public DriverArchive(Integer year, String position, String driver, String nationality, String car, Float points) {
+    public DriverArchive(
+            Integer id,
+            Integer year,
+            String position,
+            String driver,
+            String nationality,
+            String car,
+            Float points
+    ) {
+        this.id = id;
         this.year = year;
         this.position = position;
         this.driver = driver;
         this.nationality = nationality;
         this.car = car;
         this.points = points;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getYear() {
@@ -78,5 +100,30 @@ public class DriverArchive {
 
     public void setPoints(Float points) {
         this.points = points;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        DriverArchive that = (DriverArchive) o;
+        return Objects.equals(id, that.id) && Objects.equals(year, that.year) && Objects.equals(position, that.position) && Objects.equals(driver, that.driver) && Objects.equals(nationality, that.nationality) && Objects.equals(car, that.car) && Objects.equals(points, that.points);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, year, position, driver, nationality, car, points);
+    }
+
+    @Override
+    public String toString() {
+        return "DriverArchive{" +
+                "id=" + id +
+                ", year=" + year +
+                ", position='" + position + '\'' +
+                ", driver='" + driver + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", car='" + car + '\'' +
+                ", points=" + points +
+                '}';
     }
 }

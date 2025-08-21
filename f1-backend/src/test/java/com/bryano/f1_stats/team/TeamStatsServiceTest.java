@@ -9,8 +9,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class TeamStatsServiceTest {
@@ -25,8 +27,8 @@ class TeamStatsServiceTest {
     @BeforeEach
     void setUp() {
         mockTeamStats = List.of(
-                new TeamStats("Team1", "", "", "", "", 0, 0, "", 0, 0),
-                new TeamStats("Team2", "", "", "", "", 0, 0, "", 0, 0)
+                new TeamStats(null, "Team1", "", "", "", "", "", 0, 0, "", 0),
+                new TeamStats(null, "Team2", "", "", "", "", "", 0, 0, "", 0)
         );
     }
 

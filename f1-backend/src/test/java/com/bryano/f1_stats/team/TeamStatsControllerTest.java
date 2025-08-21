@@ -11,11 +11,11 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TeamStatsController.class)
@@ -31,8 +31,8 @@ class TeamStatsControllerTest {
     @BeforeEach
     void setUp() {
         mockResponseData = List.of(
-                new TeamStats("Team1", "", "", "", "", 0, 0, "", 0, 0),
-                new TeamStats("Team2", "", "", "", "", 0, 0, "", 0, 0)
+                new TeamStats(null, "Team1", "", "", "", "", "", 0, 0, "", 0),
+                new TeamStats(null, "Team2", "", "", "", "", "", 0, 0, "", 0)
         );
     }
 
@@ -46,7 +46,8 @@ class TeamStatsControllerTest {
 
         String json = result.getResponse().getContentAsString();
         ObjectMapper objectMapper = new ObjectMapper();
-        List<TeamStats> teamStats = objectMapper.readValue(json, new TypeReference<>(){});
+        List<TeamStats> teamStats = objectMapper.readValue(json, new TypeReference<>() {
+        });
 
         assertNotNull(teamStats);
         assertEquals(2, teamStats.size());
@@ -68,7 +69,8 @@ class TeamStatsControllerTest {
 
         String json = result.getResponse().getContentAsString();
         ObjectMapper objectMapper = new ObjectMapper();
-        List<TeamStats> teamStats = objectMapper.readValue(json, new TypeReference<>(){});
+        List<TeamStats> teamStats = objectMapper.readValue(json, new TypeReference<>() {
+        });
 
         assertNotNull(teamStats);
         assertEquals(1, teamStats.size());

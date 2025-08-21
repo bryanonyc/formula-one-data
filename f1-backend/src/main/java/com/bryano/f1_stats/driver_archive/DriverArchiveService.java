@@ -22,49 +22,34 @@ public class DriverArchiveService {
     }
 
     public List<DriverArchive> getDriversByYear(Integer year) {
-        return driverArchiveRepository
-                .findAll()
-                .stream()
+        return driverArchiveRepository.findAll().stream()
                 .filter(driverArchive -> Objects.equals(driverArchive.getYear(), year))
                 .collect(Collectors.toList());
     }
 
     public List<DriverArchive> getDriversByDriver(String driver) {
-        return driverArchiveRepository
-                .findAll()
-                .stream()
-                .filter(driverArchive -> driverArchive.getDriver().toLowerCase().contains(driver.toLowerCase()))
+        return driverArchiveRepository.findAll().stream().filter(driverArchive -> driverArchive
+                .getDriver().toLowerCase().contains(driver.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
     public List<DriverArchive> getDriversByNationality(String nationality) {
         return driverArchiveRepository
-                .findAll()
-                .stream()
-                .filter(driverArchive -> driverArchive.getNationality().toLowerCase().contains(nationality.toLowerCase()))
+                .findAll().stream().filter(driverArchive -> driverArchive.getNationality()
+                        .toLowerCase().contains(nationality.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
     public List<DriverArchive> getDriversByCar(String car) {
-        return driverArchiveRepository
-                .findAll()
-                .stream()
-                .filter(driverArchive ->
-                        driverArchive.getCar() != null
-                                && driverArchive.getCar().toLowerCase().contains(car.toLowerCase())
-                )
+        return driverArchiveRepository.findAll().stream()
+                .filter(driverArchive -> driverArchive.getCar() != null
+                        && driverArchive.getCar().toLowerCase().contains(car.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
     public List<SelectOption> getDriverNames() {
-        return driverArchiveRepository
-                .findAll()
-                .stream()
-                .map(DriverArchive::getDriver)
-                .collect(Collectors.toSet())
-                .stream()
-                .sorted(String::compareTo)
-                .map(name -> new SelectOption(name, name))
-                .collect(Collectors.toList());
+        return driverArchiveRepository.findAll().stream().map(DriverArchive::getDriver)
+                .collect(Collectors.toSet()).stream().sorted(String::compareTo)
+                .map(name -> new SelectOption(name, name)).collect(Collectors.toList());
     }
 }

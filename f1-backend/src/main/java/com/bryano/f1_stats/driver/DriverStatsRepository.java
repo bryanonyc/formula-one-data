@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DriverStatsRepository extends JpaRepository<DriverStats, DriverStatsKey> {
+public interface DriverStatsRepository extends JpaRepository<DriverStats, Integer> {
 }
