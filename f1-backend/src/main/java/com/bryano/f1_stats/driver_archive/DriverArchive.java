@@ -1,13 +1,11 @@
 package com.bryano.f1_stats.driver_archive;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
+@Table(name = "driver_archive")
 public class DriverArchive {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

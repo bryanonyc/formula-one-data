@@ -1,13 +1,11 @@
 package com.bryano.f1_stats.team_archive;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
+@Table(name = "team_archive")
 public class TeamArchive {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
