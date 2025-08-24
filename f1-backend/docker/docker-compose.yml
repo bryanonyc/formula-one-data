@@ -1,0 +1,12 @@
+services:
+  f1_stats_postgres_db:
+    container_name: f1_stats_postgres_db
+    image: postgres:14
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    volumes:
+      - f1_stats_pgvolume:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+volumes:
+  f1_stats_pgvolume:
