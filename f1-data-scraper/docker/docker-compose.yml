@@ -1,0 +1,12 @@
+services:
+    api:
+        container_name: f1_stats_scraper
+        build:
+            context: ../
+            dockerfile: docker/Dockerfile
+        volumes:
+            - ../:/app
+        ports:
+            - '5001:5000'
+        environment:
+            - FLASK_ENV=development
