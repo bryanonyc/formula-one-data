@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TeamMapper {
-    TeamStats toEntity(ScrapedTeam record, Integer id) {
+    public TeamStats toEntity(ScrapedTeam record, Integer id) {
         return new TeamStats(
                 id,
                 record.fullTeamName(),
