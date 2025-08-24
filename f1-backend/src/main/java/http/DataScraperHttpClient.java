@@ -10,13 +10,13 @@ import java.util.List;
 
 public interface DataScraperHttpClient {
     @GetExchange("/api/drivers/current")
-    List<ScrapedDriver> getDrivers();
+    List<ScrapedDriver> scrapeDrivers();
 
     @GetExchange("/api/drivers/archive")
     List<ScrapedDriverArchive> scrapeDriverArchive();
 
     @GetExchange("/api/teams/current")
-    List<ScrapedTeam> getTeams();
+    List<ScrapedTeam> scrapeTeams();
 
     @GetExchange("/api/teams/archive")
     List<ScrapedTeamArchive> scrapeTeamArchive();

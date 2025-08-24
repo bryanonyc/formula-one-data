@@ -57,7 +57,7 @@ public class DriverStatsService {
     }
 
     public List<DriverStats> getUpdatedDrivers() throws IOException, InterruptedException {
-        List<ScrapedDriver> scrapedDrivers = dataScraperHttpClient.getDrivers();
+        List<ScrapedDriver> scrapedDrivers = dataScraperHttpClient.scrapeDrivers();
         List<DriverStats> existingDrivers = driverStatsRepository.findAll();
         List<DriverStats> updatedDrivers = scrapedDrivers.stream()
                 .map(scraped -> {

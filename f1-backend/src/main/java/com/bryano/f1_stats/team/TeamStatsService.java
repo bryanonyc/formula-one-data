@@ -55,7 +55,7 @@ public class TeamStatsService {
     }
 
     public List<TeamStats> getUpdatedTeams() throws IOException, InterruptedException {
-        List<ScrapedTeam> scrapedTeams = dataScraperHttpClient.getTeams();
+        List<ScrapedTeam> scrapedTeams = dataScraperHttpClient.scrapeTeams();
         List<TeamStats> existingTeams = teamStatsRepository.findAll();
         List<TeamStats> updatedTeams = scrapedTeams.stream()
                 .map(scraped -> {
