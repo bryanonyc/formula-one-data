@@ -1,6 +1,6 @@
 package com.bryano.f1_stats;
 
-import http.DataScraperHttpClient;
+import com.bryano.f1_stats.http.DataScraperHttpClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

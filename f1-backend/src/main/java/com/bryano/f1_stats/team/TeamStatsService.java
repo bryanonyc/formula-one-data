@@ -1,6 +1,6 @@
 package com.bryano.f1_stats.team;
 
-import http.DataScraperHttpClient;
+import com.bryano.f1_stats.http.DataScraperHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

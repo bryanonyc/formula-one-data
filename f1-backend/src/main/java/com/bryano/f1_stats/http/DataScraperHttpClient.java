@@ -1,4 +1,4 @@
-package http;
+package com.bryano.f1_stats.http;
 
 import com.bryano.f1_stats.driver.ScrapedDriver;
 import com.bryano.f1_stats.driver_archive.ScrapedDriverArchive;
