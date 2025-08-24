@@ -15,7 +15,7 @@ def home():
 def current_drivers():
     drivers_scraper.scrape()
 
-    df = pd.read_csv("driver_stats.csv")
+    df = pd.read_csv("data/driver_stats.csv")
 
     data = df.to_dict(orient="records")
 
@@ -26,7 +26,7 @@ def current_drivers():
 def archive_drivers():
     drivers_archive_scraper.scrape()
 
-    df = pd.read_csv("drivers_archive.csv")
+    df = pd.read_csv("data/drivers_archive.csv")
 
     data = df.to_dict(orient="records")
 
@@ -37,7 +37,7 @@ def archive_drivers():
 def current_teams():
     teams_scraper.scrape()
 
-    df = pd.read_csv("team_stats.csv")
+    df = pd.read_csv("data/team_stats.csv")
 
     data = df.to_dict(orient="records")
 
@@ -48,7 +48,7 @@ def current_teams():
 def archive_teams():
     teams_archive_scraper.scrape()
 
-    df = pd.read_csv("teams_archive.csv")
+    df = pd.read_csv("data/teams_archive.csv")
 
     data = df.to_dict(orient="records")
 
@@ -56,4 +56,4 @@ def archive_teams():
     return jsonify(data)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=5000)

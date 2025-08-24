@@ -37,7 +37,7 @@ def scrape():
             data.append(archive_data)
 
     df = pd.DataFrame(data, columns=column_headers)
-    df.to_csv('drivers_archive.csv', index=False)
+    df.to_csv('data/drivers_archive.csv', index=False)
 
 if __name__ == "__main__":
     scrape()

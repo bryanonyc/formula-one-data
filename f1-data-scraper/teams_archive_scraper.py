@@ -29,7 +29,7 @@ def scrape():
             archive_data.append(data)
 
     df = pd.DataFrame(archive_data, columns=column_headers)
-    df.to_csv('teams_archive.csv', index=False)
+    df.to_csv('data/teams_archive.csv', index=False)
 
 if __name__ == "__main__":
     scrape()

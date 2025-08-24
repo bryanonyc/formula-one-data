@@ -42,7 +42,7 @@ def scrape():
         data.append(team_data)
 
     data_frames = pd.DataFrame(data, columns=column_headers)
-    data_frames.to_csv('team_stats.csv', index=False)
+    data_frames.to_csv('data/team_stats.csv', index=False)
 
 def _get_team_name(soup):
     return soup.find('dt', string='Full Team Name').find_next_sibling('dd').text

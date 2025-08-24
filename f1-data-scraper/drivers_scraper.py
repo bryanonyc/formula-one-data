@@ -48,7 +48,7 @@ def scrape():
     data_frames = pd.DataFrame(data, columns=column_headers)
 
     # Output Data Frame to CSV without the deffault index
-    data_frames.to_csv('driver_stats.csv', index=False)
+    data_frames.to_csv('data/driver_stats.csv', index=False)
 
 def _get_driver_name(href):
     return href.rstrip('/').split('/')[-1].replace('-', ' ').title()
