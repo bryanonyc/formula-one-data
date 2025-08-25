@@ -1,0 +1,76 @@
+services:
+  f1_stats_scraper_api:
+    container_name: f1_stats_scraper_api
+    hostname: web-scraper
+    build:
+        context: ./f1-data-scraper
+        dockerfile: docker/Dockerfile
+    volumes:
+        - ./f1-data-scraper:/app
+    ports:
+        - '5050:5050'
+    environment:
+        - FLASK_ENV=development
+    networks:
+      - f1_stats_network
+
+  f1_stats_api:
+    container_name: f1_stats_api
+    hostname: api
+    build:
+      context: ./f1-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      - f1_stats_postgres_db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://f1_stats_postgres_db:5432/f1_stats
+      SPRING_DATASOURCE_USERNAME: postgres
+      DATA_SCRAPER_API_BASE_URL: http://web-scraper:5050
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+    networks:
+      - f1_stats_network
+
+  f1_stats_frontend:
+    container_name: f1_stats_frontend
+    hostname: ui
+    build:
+      context: ./f1-frontend
+      dockerfile: docker/Dockerfile
+    volumes:
+        - ./f1-frontend:/app
+        - ui_node_module_volume:/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - f1_stats_api
+    environment:
+      NODE_ENV: development
+      API_ENDPOINT_BASE_URL: http://localhost:8081
+      REACT_APP_NODE_ENV: development
+      REACT_APP_API_ENDPOINT_BASE_URL: http://localhost:8081
+    networks:
+      - f1_stats_network
+
+  f1_stats_postgres_db:
+    container_name: f1_stats_postgres_db
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: f1_stats
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    volumes:
+      - f1_stats_pgvolume:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    networks:
+      - f1_stats_network
+
+volumes:
+  f1_stats_pgvolume:
+  ui_node_module_volume:
+
+networks:
+  f1_stats_network:
+    driver: bridge
