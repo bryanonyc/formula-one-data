@@ -1,12 +1,12 @@
 services:
-    api:
-        container_name: f1_stats_scraper
+    f1-scraper:
+        container_name: f1-scraper
         build:
             context: ../
             dockerfile: docker/Dockerfile
         volumes:
             - ../:/app
         ports:
-            - '5050:5000'
+            - '5050:5050'
         environment:
             - FLASK_ENV=development
