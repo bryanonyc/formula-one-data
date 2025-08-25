@@ -24,6 +24,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://f1-db:5432/f1_stats
       SPRING_DATASOURCE_USERNAME: postgres
       # communicate with web-scraper not running in a container but on http://localhost:5050
+      # web scraper should be up and running before starting the api
       DATA_SCRAPER_API_BASE_URL: http://host.docker.internal:5050
       CORS_ALLOWED_ORIGINS: http://host.docker.internal:3000
 
