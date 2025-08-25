@@ -1,0 +1,11 @@
+services:
+    f1-ui:
+        container_name: f1-ui
+        build:
+            context: ../
+            dockerfile: docker/Dockerfile
+        volumes:
+            - ../:/app
+            - /app/node_modules
+        ports:
+            - '3001:3000'
